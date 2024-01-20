@@ -1,1 +1,1 @@
-# PHPNew
+# This is a demo social media project made using laravel
