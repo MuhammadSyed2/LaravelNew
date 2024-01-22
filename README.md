@@ -1,1 +1,1 @@
-# This is a demo social media project made using laravel
+# This is a demo project made using laravel
