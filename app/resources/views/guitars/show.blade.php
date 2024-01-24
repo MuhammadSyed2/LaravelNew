@@ -8,7 +8,8 @@
                 {{$guitar['name']}}
             </h3>
             <ul>
-                <li>Made by: {{$guitar['brand']}}</li>
+                <li>Made by: {{ $guitar['brand'] }}</li>
+                <li>Made on: {{ $guitar['yearMade'] }}</li>
             </ul>
         </div>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Guitar;
 
 class GuitarsController extends Controller
 {
@@ -21,7 +22,7 @@ class GuitarsController extends Controller
     {
         // GET
         return view("guitars.index", [
-            "guitars" => self::getData(),
+            "guitars" => Guitar::all(),
             'userInput' => '<script>alert("hello")</script>'
         ]);
     }
@@ -40,7 +41,21 @@ class GuitarsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'guitarName' => 'required',
+            'brand' => 'required',
+            'year' => ['required', 'integer']
+        ]) ;
         // POST
+        
+        $guitar = new Guitar();
+
+        $guitar->name = strip_tags($request->input('guitarName'));
+        $guitar->brand = strip_tags($request->input('brand'));
+        $guitar->yearMade = strip_tags($request->input('year'));
+        $guitar->save();
+
+        return redirect()->route('guitars.index');
     }
 
     /**
@@ -49,31 +64,42 @@ class GuitarsController extends Controller
     public function show(string $guitar)
     {
         // GET
-        $guitars = self::getData();
-        $index = array_search($guitar, array_column($guitars,'id'));
-
-        if ($index === false) {
-            abort(404);
-        }
         return view('guitars.show', [
-            'guitar'=> $guitars[$index]
+            'guitar'=> guitar::findorFail($guitar)
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $guitar)
     {
         // GET
+        return view('guitars.edit', [
+            'guitar'=> guitar::findorFail($guitar)
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $guitar)
     {
+        $request->validate([
+            'guitarName' => 'required',
+            'brand' => 'required',
+            'year' => ['required', 'integer']
+        ]) ;
         // POST
+        
+        $record = Guitar::findorFail( $guitar ) ;
+
+        $record->name = strip_tags($request->input('guitarName'));
+        $record->brand = strip_tags($request->input('brand'));
+        $record->yearMade = strip_tags($request->input('year'));
+        $record->save();
+
+        return redirect()->route('guitars.show', $guitar);
     }
 
     /**

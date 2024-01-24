@@ -22,3 +22,9 @@ nav a {
 .form div>button {
     padding: 5px;
 }
+
+.form .formError {
+    font-size: .75rem;
+    color: red;
+    font-weight: bold;
+}
