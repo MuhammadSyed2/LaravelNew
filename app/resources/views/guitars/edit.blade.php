@@ -7,8 +7,8 @@
             @csrf
             @method('PUT')
             <div>
-                <label for="guitarName" class="text-sm">Guitar Name</label>
-                <input type="text" class="text-lg border-1" id="guitarName" name="guitarName" value="{{ $guitar->name }}">
+                <label for="name" class="text-sm">Guitar Name</label>
+                <input type="text" class="text-lg border-1" id="name" name="name" value="{{ $guitar->name }}">
                 @error('guitarName')
                     <div class="formError">
                         {{ $message }}
@@ -25,8 +25,8 @@
                 @enderror
             </div>
             <div>
-                <label for="year" class="text-sm">Year</label>
-                <input type="text" class="text-lg border-1" id="year" name="year" value="{{ $guitar->yearMade }}">
+                <label for="yearMade" class="text-sm">Year</label>
+                <input type="text" class="text-lg border-1" id="yearMade" name="yearMade" value="{{ $guitar->yearMade }}">
                 @error('year')
                     <div class="formError">
                         {{ $message }}
