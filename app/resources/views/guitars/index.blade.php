@@ -11,6 +11,10 @@
                     <ul>
                         <li>Made by: {{ $guitar['brand'] }}</li>
                         <li>Made on: {{ $guitar['yearMade'] }}</li>
+                        <form method="POST" action="{{ route('guitars.destroy', ['guitar' => $guitar->id]) }}">
+                            @csrf
+                            <input class="bg-white" type="submit" value="Delete" />
+                        </form>
                     </ul>
                 </div>
             @endforeach

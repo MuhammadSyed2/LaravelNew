@@ -89,7 +89,7 @@ class GuitarsController extends Controller
     public function destroy(Guitar $guitar) // DELETE
     {
         // DELETE
-        // $guitar->delete();
-        // return redirect()->route('guitars.index');
+        $guitar->delete();
+        return redirect()->route('guitars.index');
     }
 }
