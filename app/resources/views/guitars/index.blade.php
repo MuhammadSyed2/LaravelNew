@@ -5,7 +5,7 @@
         @auth
             <a href="{{ route('guitars.create') }}" class="btn bg-white">Create New Entry</a>
         @else
-            <span>Login to create new entry</span>
+            <span class="bg-white">Login to create new entry</span>
         @endauth
         
         @if( count($guitars) > 0)
@@ -24,7 +24,7 @@
                                 <input class="bg-white" type="submit" value="Delete" />
                             </form>
                         @else
-                            <span>Login to delete entry</span>
+                            <span class="bg-white">Login to delete entry</span>
                         @endauth
                     </ul>
                 </div>
